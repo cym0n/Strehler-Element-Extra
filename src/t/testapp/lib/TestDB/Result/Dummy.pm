@@ -68,6 +68,12 @@ __PACKAGE__->table("DUMMY");
   is_nullable: 1
   size: 1
 
+=head2 slug
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 120
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -83,7 +89,7 @@ __PACKAGE__->add_columns(
   { data_type => "date", is_nullable => 1 },
   "published",
   { data_type => "tinyint", is_nullable => 1, size => 1 },
-   "slug",
+  "slug",
   { data_type => "varchar", is_nullable => 1, size => 120 },
 );
 
@@ -100,8 +106,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07037 @ 2014-05-16 00:56:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lv/Bxl+Kt6PxXBFiJ7+Kig
+# Created by DBIx::Class::Schema::Loader v0.07037 @ 2015-02-06 00:25:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bOaGHnKuNrG78AiMTCC/zA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

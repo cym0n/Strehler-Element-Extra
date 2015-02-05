@@ -21,6 +21,7 @@ plugins:
   DBIC:
     default:
       dsn: dbi:SQLite:dbname=t/testapp/test.sqlite
+      #dsn: dbi:SQLite:dbname=test.sqlite
       schema_class: TestDB
 
 Strehler:
