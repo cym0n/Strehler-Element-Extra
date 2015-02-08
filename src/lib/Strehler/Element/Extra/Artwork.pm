@@ -168,4 +168,38 @@ sub install
     $self->deploy_entity_on_db($dbh, ["Strehler::Schema::Extra::Artwork", "Strehler::Schema::Extra::Artdescription"]);
     return "Artwork entity available!\n\nDeploy of database tables completed\n\nCheck above for errors\n\nRun strehler schemadump to update your model\n\n";
 }
+
+=encoding utf8
+
+=head1 NAME
+
+Strehler::Element::Extra::Artwork - Artwork entity
+
+=head1 DESCRIPTION
+
+Like image entity, but allow you to load a second picture that you can use as thumbnail (or for other purposes).
+
+=head1 INSTALLATION
+
+    strehler initentity Strehler::Element::Extra::Artwork
+
+Entity installation will create two new database tables to store artworks. You'll need a schemadump.
+
+=head1 ATTRIBUTES
+
+Artwork has the same attributes of L<Strehler::Element::Image>. 
+
+Thumbnail is added to them.
+
+=over 4
+
+=item B<thumbnail>
+
+A complete new image, loaded using the backend, alternative to the main one.
+
+=back
+
+=cut
+
+
 1;
