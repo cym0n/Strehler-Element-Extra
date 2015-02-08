@@ -4,13 +4,6 @@ use strict;
 use Cwd 'abs_path';
 use Moo;
 use Dancer2 0.154000;
-use SQL::Translator;
-use SQL::Translator::Diff;
-use SQL::Translator::Parser::DBIx::Class;
-use Data::Dumper;
-use DBIx::Class::Migration;
-use DBIx::Class::Schema::Diff;
-use DBIx::Class::DeploymentHandler;
 
 extends 'Strehler::Element';
 with 'Strehler::Element::Role::Maintainer';

@@ -50,7 +50,7 @@ __PACKAGE__->table("CATEGORIES");
 =head2 parent
 
   data_type: 'integer'
-  default_value: null
+  is_foreign_key: 1
   is_nullable: 1
 
 =cut
@@ -61,7 +61,7 @@ __PACKAGE__->add_columns(
   "category",
   { data_type => "varchar", is_nullable => 1, size => 120 },
   "parent",
-  { data_type => "integer", default_value => \"null", is_nullable => 1 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -78,6 +78,21 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
+=head2 articles
+
+Type: has_many
+
+Related object: L<TestDB::Result::Article>
+
+=cut
+
+__PACKAGE__->has_many(
+  "articles",
+  "TestDB::Result::Article",
+  { "foreign.category" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 artworks
 
 Type: has_many
@@ -93,9 +108,74 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 categories
 
-# Created by DBIx::Class::Schema::Loader v0.07037 @ 2015-02-06 00:25:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YzhEfojMmVxWwa94WuFUcQ
+Type: has_many
+
+Related object: L<TestDB::Result::Category>
+
+=cut
+
+__PACKAGE__->has_many(
+  "categories",
+  "TestDB::Result::Category",
+  { "foreign.parent" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 configured_tags
+
+Type: has_many
+
+Related object: L<TestDB::Result::ConfiguredTag>
+
+=cut
+
+__PACKAGE__->has_many(
+  "configured_tags",
+  "TestDB::Result::ConfiguredTag",
+  { "foreign.category_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 images
+
+Type: has_many
+
+Related object: L<TestDB::Result::Image>
+
+=cut
+
+__PACKAGE__->has_many(
+  "images",
+  "TestDB::Result::Image",
+  { "foreign.category" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 parent
+
+Type: belongs_to
+
+Related object: L<TestDB::Result::Category>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "parent",
+  "TestDB::Result::Category",
+  { id => "parent" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "RESTRICT",
+    on_update     => "RESTRICT",
+  },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-02-08 13:14:35
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:L0bozHJwZWq8iRZCrWeYAA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

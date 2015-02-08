@@ -45,7 +45,7 @@ EOTEXT
 test_psgi $app, sub {
     my $cb = shift;
     my $site = "http://localhost";
-    my $r = $cb->(GET '/chapter/155-test-article');
+    my $r = $cb->(GET '/chapter/1-test-article');
 
     like($r->content, qr/$incipit/, "Incipit OK");
     like($r->content, qr/$abstract/, "Abstract OK");

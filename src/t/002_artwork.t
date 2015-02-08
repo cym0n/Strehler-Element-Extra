@@ -32,7 +32,7 @@ test_psgi $app, sub {
                     'Content' =>  [
 			                'photo' => ['t/res/strehler.jpg', 'strehler.jpg', 'Content-Type' => 'image/jpg'],
 			                'thumbnail' => ['t/res/strehler2.jpg', 'strehler2.jpg', 'Content-Type' => 'image/jpg'],
-                            'category' => 153,
+                            'category' => 1,
                             'subcategory' => undef,
                             'tags' => 'tag1',
                             'title_it' => 'Automatic test - title - IT',
@@ -53,7 +53,7 @@ test_psgi $app, sub {
                     'Content' =>  [
    			                'photo' => ['t/res/strehler.jpg', 'strehler.jpg', 'Content-Type' => 'image/jpg'],
 			                'thumbnail' => ['t/res/strehler2.jpg', 'strehler2.jpg', 'Content-Type' => 'image/jpg'],
-                            'category' => 153,
+                            'category' => 1,
                             'subcategory' => undef,
                             'tags' => 'tag1',
                             'title_it' => 'Automatic test - title changed - IT',
