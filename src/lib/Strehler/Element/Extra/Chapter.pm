@@ -16,37 +16,27 @@ sub text
     my $text = shift;
     return markdown($text);
 }
-sub bare_text
-{
-    my $self = shift;
-    my $text = shift;
-    return $text;
-}
-
 sub abstract
 {
     my $self = shift;
     my $language = shift;
     my $text = $self->get_attr_multilang('text', $language, 1);
+    return undef if(! $text); 
     return markdown(substr($text, 0, 800) . "...");
 }
-
 sub incipit
 {
     my $self = shift;
     my $language = shift;
     my $text = $self->get_attr_multilang('text', $language, 1);
-    return substr($text, 0, 100) . "...";
+    return undef if(! $text);
+    return markdown(substr($text, 0, 100) . "...");
 }
 
-sub get_ext_data
+sub multilang_data_fields
 {
     my $self = shift;
-    my $language = shift;
-    my %data = $self->SUPER::get_ext_data($language);
-    $data{'incipit'} = $self->incipit($language);
-    $data{'abstract'} = $self->abstract($language);
-    return %data; 
+    return ( $self->SUPER::multilang_data_fields(), 'incipit', 'abstract');
 }
 
 sub install
@@ -58,7 +48,7 @@ sub install
 
 =head1 NAME
 
-Strehler::Element::Extra::Artwork - Artwork entity
+Strehler::Element::Extra::Chapter - Chapter entity
 
 =head1 DESCRIPTION
 

@@ -17,7 +17,8 @@ require t::testapp::lib::Site;
 my $app = Site->to_app;
 
 my $incipit = <<EOINCIPIT;
-<div class="incipit">Lorem ipsum dolor sit amet, in phaedrum explicari constituam pro, graeco malorum et vix. Mei an habe...</div>
+<div class="incipit"><p>Lorem ipsum dolor sit amet, in phaedrum explicari constituam pro, graeco malorum et vix. Mei an habe...</p>
+</div>
 EOINCIPIT
 
 my $abstract = <<EOABSTRACT;

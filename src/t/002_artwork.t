@@ -33,7 +33,7 @@ test_psgi $app, sub {
 			                'photo' => ['t/res/strehler.jpg', 'strehler.jpg', 'Content-Type' => 'image/jpg'],
 			                'thumbnail' => ['t/res/strehler2.jpg', 'strehler2.jpg', 'Content-Type' => 'image/jpg'],
                             'category' => 1,
-                            'subcategory' => undef,
+                            'category-name' => 'dummy',
                             'tags' => 'tag1',
                             'title_it' => 'Automatic test - title - IT',
                             'description_it' => 'Automatic test - body - IT',
@@ -43,6 +43,7 @@ test_psgi $app, sub {
                             ]
                  );
     is($r->code, 302, "Image submitted, navigation redirected to list (submit-go)");
+    print $r->content;
     my $images = Strehler::Element::Extra::Artwork->get_list();
     my $image = $images->{'to_view'}->[0];
     my $image_id = $image->{'id'};
